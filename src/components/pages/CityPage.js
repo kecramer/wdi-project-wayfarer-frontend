@@ -12,8 +12,8 @@ class CityPage extends Component {
       <Grid container
         spacing={24}
         alignItems={'space-around'}
-        direction={'column'}
-        justify-content={'space-around'}>
+        direction={'row'}
+        justify-content={'center'}>
 
         <CitiesContainer/>
 

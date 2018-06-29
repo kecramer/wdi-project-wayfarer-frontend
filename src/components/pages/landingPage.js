@@ -25,7 +25,7 @@ class LandingPage extends Component {
             spacing={24}
             alignItems={'center'}
             direction={'row'}
-            justify-content={'space-around'}>
+            justifyContent={'space-around'}>
             <PromoText/>
             <PromoText/>
             <PromoText/>

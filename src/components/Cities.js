@@ -4,13 +4,12 @@ import City from './City'
 export default class Cities extends Component {
   render(){
     return (
-      <Fragment
-      column>
-       <City/>
-       <City/>
-       <City/>
-       <City/>
-      </Fragment>
+        <Fragment>
+           <City/>
+           <City/>
+           <City/>
+           <City/>
+        </Fragment>
     )
   }
 }

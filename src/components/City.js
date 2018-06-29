@@ -20,7 +20,7 @@ function City(props) {
   return (
       <Grid item md={11}
         justify-content={'center'}>
-        <Paper className={classes.root} elevation={24}>
+        <Paper className={classes.root} elevation={12}>
           <Typography variant="headline" component="h3">
             This is a City. Hello.
           </Typography>

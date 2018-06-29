@@ -8,9 +8,10 @@ export default class CitiesContainer extends Component {
       <Grid item md={4}>
         <Grid container
           direction={'column'}
-          justify-content={'space-around'}
-          spacing={24}>
-
+          justifyContent={'space-around'}
+          spacing={24}
+          alignItems={'center'}
+          style={{paddingTop: '2.5em'}}>
           <Cities/>
         </Grid>
       </Grid>
