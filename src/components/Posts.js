@@ -5,12 +5,12 @@ import Grid from '@material-ui/core/Grid'
 export default class Posts extends Component {
   render(){
     return (
-      <Grid container>
+      <Fragment>
        <Post/>
        <Post/>
        <Post/>
        <Post/>
-      </Grid>
+     </Fragment>
     )
   }
 }
