@@ -24,10 +24,10 @@ class LandingPage extends Component {
         <div className="articleContainer">
           I am a landing page component. Hello.
           <Grid container
-            spacing={12}
+            spacing={24}
             alignItems={'center'}
             direction={'row'}
-            justify-content={'space-between'}>
+            justify-content={'space-around'}>
             <PromoText/>
             <PromoText/>
             <PromoText/>
