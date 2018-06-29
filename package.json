@@ -1,0 +1,24 @@
+{
+  "name": "wdi-project-wayfarer-frontend",
+  "version": "0.1.0",
+  "description": "react front end for project wayfarer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kecramer/wdi-project-wayfarer-frontend.git"
+  },
+  "author": "Kevin Cramer, Ben Croman, Fanny Villarosa, Biniam Hagos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kecramer/wdi-project-wayfarer-frontend/issues"
+  },
+  "homepage": "https://github.com/kecramer/wdi-project-wayfarer-frontend#readme",
+  "dependencies": {
+    "@material-ui/core": "^1.3.0",
+    "react": "^16.4.1",
+    "redux": "^4.0.0"
+  }
+}
