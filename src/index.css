@@ -3,3 +3,23 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+/* img {
+  max-width: 40%
+} */
+
+.carousel {
+  display: inline-block;
+  height: 35em;
+  margin: 0 auto;
+
+}
+
+.carousel img {
+
+}
+
+/* .articleContainer {
+  display: flex;
+  justify-content: space-around;
+} */

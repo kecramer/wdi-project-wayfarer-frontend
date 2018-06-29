@@ -1,19 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import TitleBar from './components/TitleBar'
+import {Switch, Route, Link} from 'react-router-dom'
+import LandingPage from './components/pages/LandingPage'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Fragment>
+        <div className="App">
+          <header><TitleBar /></header>
+          <main>
+            <LandingPage />
+          </main>
+        </div>
+      </Fragment>
     );
   }
 }
