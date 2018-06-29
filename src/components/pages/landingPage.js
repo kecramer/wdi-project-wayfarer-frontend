@@ -3,10 +3,8 @@ import CarouselContainer from '../CarouselContainer'
 import styles from 'react-responsive-carousel/lib/styles/carousel.min.css'
 import PromoText from '../PromoText'
 import Grid from '@material-ui/core/Grid'
+
 class LandingPage extends Component {
-
-
-
 
   render() {
     const classNames = {

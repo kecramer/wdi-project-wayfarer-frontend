@@ -4,6 +4,7 @@ import './App.css';
 import TitleBar from './components/TitleBar'
 import {Switch, Route, Link} from 'react-router-dom'
 import LandingPage from './components/pages/LandingPage'
+import CityPage from './components/pages/CityPage'
 
 class App extends Component {
   render() {
@@ -12,7 +13,7 @@ class App extends Component {
         <div className="App">
           <header><TitleBar /></header>
           <main>
-            <LandingPage />
+            <CityPage />
           </main>
         </div>
       </Fragment>
