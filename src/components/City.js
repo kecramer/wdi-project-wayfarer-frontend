@@ -22,10 +22,9 @@ function City(props) {
         justify-content={'center'}>
         <Paper className={classes.root} elevation={12}>
           <Typography variant="headline" component="h3">
-            This is a City. Hello.
           </Typography>
           <Typography component="p">
-          San Francisco
+          {props.city.name}
           </Typography>
         </Paper>
       </Grid>

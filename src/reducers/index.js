@@ -1,13 +1,11 @@
 import { combineReducers } from 'redux'
-import { reducer as form } from 'redux-form'
-import postReducer from './postReducer'
-import authReducer from './auth_reducer'
+import cities from './cityReducer'
+import posts from './postReducer'
+import profiles from './profileReducer'
 
 // Combine all our reducers together
 const rootReducer = combineReducers({
-  post: postReducer,
-  form,
-  auth: authReducer
+  cities
 })
 
 export default rootReducer
