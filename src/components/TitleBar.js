@@ -57,16 +57,19 @@ class ButtonAppBar extends Component {
   handleClose = () => {
     this.setState({ anchorEl: null, signUpFormShow: false, loginFormShow: false });
   }
-  componentWillUpdate(){
-    true
-  }
+
   render() {
     const { classes } = this.props;
     const { anchorEl } = this.state;
     return (
       <div className={classes.root}>
-      <LogInModal open={this.state.loginFormShow} />
-      <SignUpModal open={this.state.signUpFormShow}/>
+      { this.state.loginFormShow && <LogInModal
+        open={this.state.loginFormShow}
+        handleClose={this.handleClose}
+       /> }
+      { this.state.signUpFormShow && <SignUpModal
+        open={this.state.signUpFormShow}
+        handleClose={this.handleClose}/>}
         <AppBar position="static">
           <Toolbar>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">

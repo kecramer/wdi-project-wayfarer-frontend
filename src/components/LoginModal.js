@@ -52,6 +52,7 @@ class SimpleModal extends React.Component {
   };
 
   handleClose = () => {
+    this.props.handleClose()
     this.setState({ open: false });
   };
   componentWillMount(){

@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import * as actions from '../actions';
+import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import {Modal, form, TextField} from '@material-ui/core';
@@ -37,9 +39,35 @@ const styles = theme => ({
 
 class SignUpModal extends React.Component {
   state = {
-    open: false,
+    name: ''
+  }
+  componentWillUnmount() {
+    if (this.props.errorMessage) {
+      this.props.authError(null)
+    }
+  }
+
+  handleSubmit({email, password, passwordConfirmation}) {
+    this.props.signupUser({email, password, passwordConfirmation})
+  }
+
+  getRedirectPath() {
+    const locationState = this.props.location.state
+    if (locationState && locationState.from.pathname) {
+      return locationState.from.pathname
+    } else {
+      return '/'
+    }
+  }
+
+  handleOpen = () => {
+    this.setState({ open: true });
   };
 
+  handleClose = () => {
+    this.props.handleClose()
+    this.setState({ open: false });
+  };
 
   handleChange = name => event => {
     this.setState({
@@ -47,22 +75,17 @@ class SignUpModal extends React.Component {
     });
   };
 
-  handleOpen = () => {
-    this.setState({ open: true });
-  };
+  submit=(e)=>{
+	  e.preventDefault()
+	  console.log(e)
+  }
 
-  handleClose = () => {
-    this.setState({ open: false });
-  };
   componentWillMount(){
 	  this.setState({
 		  open: this.props.open
 	  })
   }
-  submit=(e)=>{
-	  e.preventDefault()
-	  console.log(e)
-  }
+
   render() {
     const { classes } = this.props;
 
@@ -115,6 +138,13 @@ class SignUpModal extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    authenticated: state.auth.authenticated,
+    errorMessage: state.auth.error
+  }
+}
+
 SignUpModal.propTypes = {
   classes: PropTypes.object.isRequired,
 };
@@ -122,4 +152,4 @@ SignUpModal.propTypes = {
 // We need an intermediary variable for handling the recursive nesting.
 const SignUpModalWrapped = withStyles(styles)(SignUpModal);
 
-export default SignUpModalWrapped;
+export default connect(mapStateToProps, actions)(SignUpModal);
