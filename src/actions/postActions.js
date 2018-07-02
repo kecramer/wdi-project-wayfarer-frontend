@@ -19,8 +19,8 @@ let post = {
   id = Number,
   title: String,
   body: String,
-  author:user,
-  city:city,
+  author: user,
+  city: city,
   created: Date,
   }
 
