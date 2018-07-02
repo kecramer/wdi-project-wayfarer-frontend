@@ -13,7 +13,11 @@ class App extends Component {
         <div className="App">
           <header><TitleBar /></header>
           <main>
-            <CityPage />
+          <Switch>
+            <Route exact path = '/' component = {LandingPage}/>
+            <Route path = '/cities' component = {CityPage}/>
+            <Route path = '/city/:id' component = {CityPage}/>
+          </Switch>
           </main>
         </div>
       </Fragment>
