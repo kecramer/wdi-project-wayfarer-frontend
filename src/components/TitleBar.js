@@ -8,7 +8,10 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem'
+import MenuItem from '@material-ui/core/MenuItem';
+import LogInModal from './LoginModal';
+import SignUpModal from './SignUpModal';
+import { WSAENETUNREACH } from 'constants';
 
 const styles = {
   root: {
@@ -28,21 +31,42 @@ class ButtonAppBar extends Component {
     super()
     this.state = {
       anchorEl: null,
+      loginFormShow: false,
+      signUpFormShow: false
     }
   }
+  showLogin = (e) =>{
+    e.preventDefault()
+    let taco = !this.state.loginFormShow
+    this.setState({
+      loginFormShow: taco
+    })
+  }
 
+  showSignUp = (e) =>{
+    e.preventDefault()
+    let taco = !this.state.signUpFormShow
+    this.setState({
+      signUpFormShow: taco
+    })
+  }
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
   handleClose = () => {
-    this.setState({ anchorEl: null });
+    this.setState({ anchorEl: null, signUpFormShow: false, loginFormShow: false });
+  }
+  componentWillUpdate(){
+    true
   }
   render() {
     const { classes } = this.props;
     const { anchorEl } = this.state;
     return (
       <div className={classes.root}>
+      <LogInModal open={this.state.loginFormShow} />
+      <SignUpModal open={this.state.signUpFormShow}/>
         <AppBar position="static">
           <Toolbar>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
@@ -65,7 +89,11 @@ class ButtonAppBar extends Component {
                 Wayfarer
               </Typography>
               <Button
+                onClick= {this.showLogin}
                 color="inherit">Login</Button>
+              <Button
+                onClick= {this.showSignUp}
+                color="inherit">SignUp</Button>
             </Toolbar>
           </AppBar>
         </div>

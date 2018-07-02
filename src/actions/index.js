@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { UNAUTH_USER, AUTH_USER, AUTH_ERROR, FETCH_MESSAGE } from './types'
-const ROOT_URL = 'http://localhost:3090'
+// const ROOT_URL = 'http://localhost:3090'
+const ROOT_URL = 'https://nameless-retreat-49699.herokuapp.com/'
+
 
 export function signinUser({email, password}) {
 
