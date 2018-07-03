@@ -1,5 +1,5 @@
 import React, { Component} from 'react'
-import Grid from '@material-ui/core/Grid'
+import Grid from 'material-ui/core/Grid'
 import Cities from '../components/Cities'
 
 export default class CitiesContainer extends Component {

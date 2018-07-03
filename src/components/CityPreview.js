@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import {CardMedia, Grid, Card} from '@material-ui/core'
+import {CardMedia, Grid, Card} from 'material-ui/core'
 
 
 export default class CityPreview extends Component {

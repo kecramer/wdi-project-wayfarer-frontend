@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import {Modal, form, TextField} from '@material-ui/core';
-import Button from '@material-ui/core/Button';
+import { withStyles } from 'material-ui/core/styles';
+import Typography from 'material-ui/core/Typography';
+import {Modal, form, TextField} from 'material-ui/core';
+import RaisedButton from 'material-ui/core/RaisedButton';
 
 // function rand() {
 //   return Math.round(Math.random() * 20) - 10;
@@ -94,11 +94,11 @@ class SimpleModal extends React.Component {
 					className={classes.textField}
 					margin="normal"
 				/>
-				<Button
+				<RaisedButton
   				color="primary"
           onClick= {this.submit}
 				>Submit
-				</Button>
+      </RaisedButton>
 			</form>
             <SimpleModalWrapped />
           </div>

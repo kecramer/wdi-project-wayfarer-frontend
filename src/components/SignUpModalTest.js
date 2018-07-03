@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as actions from '../actions';
 import { connect } from 'react-redux';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import {Modal, form, TextField} from '@material-ui/core';
-import Button from '@material-ui/core/Button';
+import { withStyles } from 'material-ui/core/styles';
+import Typography from 'material-ui/core/Typography';
+import {Modal, form, TextField} from 'material-ui/core';
+import Button from 'material-ui/core/Button';
 import SignUpForm from './auth/SignUpForm'
 
 // function rand() {

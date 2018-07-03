@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { reduxForm, Field } from 'redux-form'
-import { Button } from '@material-ui/core/'
+import { Button } from 'material-ui/core/'
 import { renderTextField } from './FormHelpers'
-import {Modal, form, TextField} from '@material-ui/core';
+import {Modal, form, TextField} from 'material-ui/core';
 
 
 
@@ -58,7 +58,7 @@ class SignupForm extends Component {
 
           <Button
             color="primary"
-            onClick= {handleSubmit}
+            onClick= {this.props.handleSubmit}
           >Submit
           </Button>
         </form>
