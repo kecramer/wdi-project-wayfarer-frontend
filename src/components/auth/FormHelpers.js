@@ -12,4 +12,3 @@ export const renderTextField = ({input, type, label, meta: {touched, error}, ...
     {touched && error && <span className="error">{error}</span>}
   </div>
 )
-

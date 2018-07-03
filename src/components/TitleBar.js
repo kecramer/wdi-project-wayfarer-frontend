@@ -61,6 +61,7 @@ class ButtonAppBar extends Component {
   render() {
     const { classes } = this.props;
     const { anchorEl } = this.state;
+    console.log(classes)
     return (
       <div className={classes.root}>
       { this.state.loginFormShow && <LogInModal
@@ -68,6 +69,7 @@ class ButtonAppBar extends Component {
         handleClose={this.handleClose}
        /> }
       { this.state.signUpFormShow && <SignUpModal
+        classes={this.props}
         open={this.state.signUpFormShow}
         handleClose={this.handleClose}/>}
         <AppBar position="static">

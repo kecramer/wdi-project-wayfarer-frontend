@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import * as actions from '../actions';
+import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import {Modal, form, TextField} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+import SignUpForm from './auth/SignUpForm'
 
 // function rand() {
 //   return Math.round(Math.random() * 20) - 10;
@@ -34,17 +37,28 @@ const styles = theme => ({
   }
 });
 
-class SimpleModal extends React.Component {
+class SignUpModal extends React.Component {
   state = {
-    open: false,
-  };
+    name: ''
+  }
+  componentWillUnmount() {
+    if (this.props.errorMessage) {
+      this.props.authError(null)
+    }
+  }
 
+  handleSubmit({email, password, passwordConfirmation}) {
+    this.props.signupUser({email, password, passwordConfirmation})
+  }
 
-  handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value,
-    });
-  };
+  getRedirectPath() {
+    const locationState = this.props.location.state
+    if (locationState && locationState.from.pathname) {
+      return locationState.from.pathname
+    } else {
+      return '/'
+    }
+  }
 
   handleOpen = () => {
     this.setState({ open: true });
@@ -54,64 +68,67 @@ class SimpleModal extends React.Component {
     this.props.handleClose()
     this.setState({ open: false });
   };
+
+  handleChange = name => event => {
+    this.setState({
+      [name]: event.target.value,
+    });
+  };
+
+  handleSubmit({email, password, passwordConfirmation}) {
+    this.props.signupUser({email, password, passwordConfirmation})
+  }
+
   componentWillMount(){
 	  this.setState({
 		  open: this.props.open
 	  })
   }
-  submit=(e)=>{
-	  e.preventDefault()
-	  console.log(e)
+
+  getRedirectPath() {
+    const locationState = this.props.location.state
+    if (locationState && locationState.from.pathname) {
+      return locationState.from.pathname
+    } else {
+      return '/'
+    }
   }
+
   render() {
     const { classes } = this.props;
 
     return (
+
         <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
           open={this.state.open}
-          onClose={this.handleClose}
-        >
+          onClose={this.handleClose}>
           <div style={getModalStyle()} className={classes.paper}>
             <Typography variant="title" id="modal-title">
-             Login
+             Sign Up
             </Typography>
-				<form className={classes.container} noValidate autoComplete="off">
-				<TextField
-					type="email"
-					id="email"
-					label="Email"
-					className={classes.textField}
-					value={this.state.name}
-					onChange={this.handleChange('name')}
-					margin="normal"
-				/>
-				<TextField
-					type='password'
-					id="password"
-					label="Password"
-					className={classes.textField}
-					margin="normal"
-				/>
-				<Button
-  				color="primary"
-          onClick= {this.submit}
-				>Submit
-				</Button>
-			</form>
-            <SimpleModalWrapped />
+            <SignUpForm onSubmit={this.handleSubmit.bind(this)} errorMessage={this.props.errorMessage}/>
+            <SignUpModalWrapped />
           </div>
         </Modal>
     );
   }
 }
 
-SimpleModal.propTypes = {
+function mapStateToProps(state) {
+  return {
+
+    authenticated: state.auth.authenticated,
+    errorMessage: state.auth.error
+  }
+}
+
+SignUpModal.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
 // We need an intermediary variable for handling the recursive nesting.
-const SimpleModalWrapped = withStyles(styles)(SimpleModal);
+const SignUpModalWrapped = withStyles(styles)(SignUpModal);
 
-export default SimpleModalWrapped;
+export default connect(mapStateToProps, actions)(SignUpModal);
