@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { UNAUTH_USER, AUTH_USER, AUTH_ERROR, FETCH_MESSAGE } from './types'
 // const ROOT_URL = 'http://localhost:3090'
-const ROOT_URL = 'https://nameless-retreat-49699.herokuapp.com/'
+const ROOT_URL = 'https://nameless-retreat-49699.herokuapp.com'
 
 
 export function signinUser({email, password}) {
@@ -35,7 +35,7 @@ export function signoutUser() {
   }
 }
 
-export function signupUser({email, password, passwordConfirmation}) {
+export function signupUser(email, password, passwordConfirmation) {
   return function (dispatch) {
     axios.post(`${ROOT_URL}/signup`, {email, password, passwordConfirmation})
       .then(response => {
@@ -46,6 +46,23 @@ export function signupUser({email, password, passwordConfirmation}) {
         dispatch(authError(response.data.error))
       })
   }
+}
+
+// export function signupUser(email, password){
+//     console.log('HITT POSTNEW USER')
+//     return(dispatch)=>{
+//         return axios.post(`${ROOT_URL}signup`, {email, password})
+//             .then((response)=>{
+//                 console.log('RESPONSE',response)
+//                 dispatch(handleUserSignup());
+//         })
+//     }
+// }
+
+export function handleUserSignup() {
+    return{
+        type: "AUTH_USER"
+    }
 }
 
 export function authError(error) {

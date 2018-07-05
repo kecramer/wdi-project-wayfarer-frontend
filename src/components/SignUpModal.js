@@ -4,7 +4,9 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import {Modal, form, TextField} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
-import formHelper from './auth/form_helpers'
+import formHelper from './auth/form_helpers';
+import * as actions from '../actions';
+import { connect } from 'react-redux'
 
 // function rand() {
 //   return Math.round(Math.random() * 20) - 10;
@@ -38,14 +40,17 @@ const styles = theme => ({
 class SignUpModal extends React.Component {
   state = {
     open: false,
+    email: '',
+    password: '',
+    confirmPassword: ''
   };
 
 
-  handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value,
-    });
-  };
+  handleChange= (e) => {
+    console.log(e)
+    this.setState({ [e.target.name]: e.target.value })
+    console.log(this.state)
+ }
 
   handleOpen = () => {
     this.setState({ open: true });
@@ -61,7 +66,8 @@ class SignUpModal extends React.Component {
   }
   submit=(e)=>{
 	  e.preventDefault()
-	  console.log(e)
+	  this.props.signupUser(this.state.email, this.state.password, this.state.confirmPassword)
+    this.handleClose()
   }
   render() {
     const { classes } = this.props;
@@ -81,24 +87,29 @@ class SignUpModal extends React.Component {
 				<form className={classes.container} noValidate autoComplete="off">
 				<TextField
 					type="email"
-					id="email"
+					name="email"
 					label="Email"
 					className={classes.textField}
-					value={this.state.name}
-					onChange={this.handleChange('name')}
+					value={(this.state && this.state.email) ||  ''}
+					onChange={this.handleChange}
 					margin="normal"
 				/>
 				<TextField
 					type='password'
-					id="password"
+					name="password"
 					label="Password"
+          value={(this.state && this.state.password) ||  ''}
+          onChange={this.handleChange}
 					className={classes.textField}
+
 					margin="normal"
 				/>
         <TextField
         type='password'
-        id="password2"
+        name="confirmPassword"
         label="Verify Password"
+        value={(this.state && this.state.confirmPassword) ||  ''}
+        onChange={this.handleChange}
         className={classes.textField}
         margin="normal"
        />
@@ -119,7 +130,11 @@ SignUpModal.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
+const mapStateToProps = (state) => {
+  return state
+}
+
 // We need an intermediary variable for handling the recursive nesting.
 const SignUpModalWrapped = withStyles(styles)(SignUpModal);
 
-export default SignUpModalWrapped;
+export default connect(mapStateToProps, actions)(SignUpModalWrapped);

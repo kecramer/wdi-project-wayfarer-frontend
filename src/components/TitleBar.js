@@ -11,7 +11,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import LogInModal from './LoginModal';
 import SignUpModal from './SignUpModal';
-import { WSAENETUNREACH } from 'constants';
+
 
 const styles = {
   root: {
@@ -65,8 +65,8 @@ class ButtonAppBar extends Component {
     const { anchorEl } = this.state;
     return (
       <div className={classes.root}>
-      <LogInModal open={this.state.loginFormShow} />
-      <SignUpModal open={this.state.signUpFormShow}/>
+      {this.state.loginFormShow && <LogInModal open={this.state.loginFormShow} />}
+      {this.state.signUpFormShow && <SignUpModal open={this.state.signUpFormShow}/>}
         <AppBar position="static">
           <Toolbar>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
